@@ -1,0 +1,11 @@
+/cache
+/wandb
+/commonsense-qa/data
+/saved_models
+*/checkpoints
+
+*.txt
+*.log
+*.pt
+*.ckpt
+*.pickle
