@@ -9,3 +9,6 @@
 *.pt
 *.ckpt
 *.pickle
+*.pkl
+
+*.pyc
