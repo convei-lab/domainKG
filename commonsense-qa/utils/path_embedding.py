@@ -39,8 +39,6 @@ def _get_path_embedding_greedy(dataset, generator, args, tokenizer=None, output_
                 tokenizer = GPT2Tokenizer.from_pretrained(lm_type)
 
                 path = tokenizer.decode(path[0].tolist(), skip_special_tokens=True)
-                print(path)
-                print("done")
                 path = ' '.join(path.replace('<PAD>', '').split())
                 with open(output_file,'a') as f:
                     f.write(path+'\n')
@@ -53,8 +51,8 @@ def _get_path_embedding_greedy(dataset, generator, args, tokenizer=None, output_
 def save_path_embedding(datahelper, generator, save_file, args):
 
     path_embeddings_dict = {}
-    # path_embeddings_dict['train'] = _get_path_embedding_greedy(datahelper.trainset, generator, args)
-    # path_embeddings_dict['dev'] = _get_path_embedding_greedy(datahelper.devset, generator, args)
+    path_embeddings_dict['train'] = _get_path_embedding_greedy(datahelper.trainset, generator, args)
+    path_embeddings_dict['dev'] = _get_path_embedding_greedy(datahelper.devset, generator, args)
     path_embeddings_dict['test'] = _get_path_embedding_greedy(datahelper.testset, generator, args)
 
     with open(save_file, 'wb') as handle:
