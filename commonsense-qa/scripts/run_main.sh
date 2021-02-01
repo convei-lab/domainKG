@@ -3,7 +3,7 @@
 source $1 
 
 # save_dir="./saved_models/${dataset}/${encoder}_elr${encoder_lr}_dlr${decoder_lr}_d${dropoutm}_b${batch_size}_s${seed}"
-save_dir="./saved_models/${dataset}/roberta-large-200119"
+save_dir="./saved_models/${dataset}/roberta-large-200201"
 
 mkdir -p ${save_dir}
 
@@ -21,4 +21,4 @@ nohup python -u main.py \
 	--nprocs 20 \
 	--save_model $save_model \
 	--seed $seed \
-	> ${save_dir}/train.log 2>&1 &
+	> ${save_dir}/main_train.log 2>&1 &

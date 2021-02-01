@@ -6,7 +6,7 @@ source $1
 # mkdir -p ${save_dir}
 save_dir="./saved_models/${dataset}/roberta-large-dokg"
 
-nohup python -u main.py \
+nohup python -u main_dokg.py \
 	--mode $mode \
 	--dataset $dataset \
 	--inhouse $inhouse \
@@ -21,4 +21,5 @@ nohup python -u main.py \
 	--nprocs 20 \
 	--save_model $save_model \
 	--seed $seed \
+	--path_embedding_path $path_embedding_path \
 	> ${save_dir}/pred.log 2>&1 &
