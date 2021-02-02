@@ -87,20 +87,36 @@ def generate_relation_freq_pkl(new_df, save_dir, relation_dict):
     
     print("relation frequency is saved in {}.".format(save_path))
 
-def generate_graph(save_dir, entity_dict, relation_dict, new_df):
+def generate_graph(save_dir, entity_dict, relation_dict, new_df, graph_type):
     graph_save_path = os.path.join(save_dir,'baby_domain_graph.nx')
-    G = nx.DiGraph()
 
-    # add_node
-    G.add_nodes_from(entity_dict['e2i'].values())
+    if (graph_type == 'Di'):
+        G = nx.DiGraph()
+        # add_node
+        G.add_nodes_from(entity_dict['e2i'].values())
 
-    for idx, path in new_df.iterrows():
-        ent_h_node = entity_dict['e2i'][path['ent_h']]
-        ent_t_node = entity_dict['e2i'][path['ent_t']]
-        rel = relation_dict['r2i'][path['rel']]
-        G.add_edge(ent_h_node, ent_t_node)
-        rel_idx = len(G[ent_h_node][ent_t_node])
-        G[ent_h_node][ent_t_node][rel_idx] = {'rel': rel}
+        for idx, path in new_df.iterrows():
+            ent_h_node = entity_dict['e2i'][path['ent_h']]
+            ent_t_node = entity_dict['e2i'][path['ent_t']]
+            rel = relation_dict['r2i'][path['rel']]
+            G.add_edge(ent_h_node, ent_t_node)
+            rel_idx = len(G[ent_h_node][ent_t_node])
+            G[ent_h_node][ent_t_node][rel_idx] = {'rel': rel}
+
+    elif (graph_type == 'MultiDi'):
+        G = nx.MultiDiGraph()
+        # add_node
+        G.add_nodes_from(entity_dict['e2i'].values())
+        for idx, path in new_df.iterrows():
+            ent_h_node = entity_dict['e2i'][path['ent_h']]
+            ent_t_node = entity_dict['e2i'][path['ent_t']]
+            rel = relation_dict['r2i'][path['rel']]
+            # existing path info
+            if G.has_edge(ent_h_node, ent_t_node):
+                if rel not in [ r['rel'] for r in G[ent_h_node][ent_t_node].values()]:
+                    G.add_edges_from([(ent_h_node, ent_t_node, dict(rel=rel))])
+            else:
+                G.add_edges_from([(ent_h_node, ent_t_node, dict(rel=rel))])
 
     print(nx.info(G))
     nx.write_gpickle(G, graph_save_path)
@@ -114,6 +130,8 @@ def main():
     parser.add_argument('--tail_ent_col_name', type = str, default ='value', help='column name of the tail entity in csv file')
     parser.add_argument('--relation_col_name', type = str, default ='relations', help='column name of the head entity in csv file')
     parser.add_argument('--save_dir', type = str, default =None, help='directory path for saving files')
+    parser.add_argument('--graph_type', type = str, default ='MultiDi', help='MultiDi or Di')
+
 
     args = parser.parse_args()
 
@@ -130,7 +148,7 @@ def main():
     generate_relation_freq_pkl(triples, args.save_dir, relation_dict) 
 
     # Generate graph
-    generate_graph(args.save_dir, entity_dict, relation_dict, triples)
+    generate_graph(args.save_dir, entity_dict, relation_dict, triples, args.graph_type)
     
     print("Finish.")
 
