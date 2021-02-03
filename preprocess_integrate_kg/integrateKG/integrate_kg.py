@@ -148,6 +148,8 @@ def integrate_graph(std_kg_path, std_kg_name, add_kg_path, add_kg_name, save_dir
     # load std_kg
     std_graph_path = os.path.join(std_kg_path, "{}.nx".format(std_kg_name))
     int_graph = nx.read_gpickle(std_graph_path)
+    print("**std_graph_info**")
+    print(nx.info(int_graph))
 
     # load entities and relations
     entity_path = os.path.join(save_dir, "entity_vocab.pkl")
@@ -179,7 +181,8 @@ def integrate_graph(std_kg_path, std_kg_name, add_kg_path, add_kg_name, save_dir
 
     graph_save_path = os.path.join(save_dir,'integrate_graph.nx')
 
-    nx.write_gpickle(graph_save_path, graph_save_path)
+    nx.write_gpickle(int_graph, graph_save_path)
+
     print("**add_graph_info**")
     print(nx.info(add_G))
     print("**int_graph_info**")

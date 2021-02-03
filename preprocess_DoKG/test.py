@@ -10,11 +10,17 @@ edge_list.append((0,1, dict(rel=100)))
 G.add_edges_from(edge_list)
 edge_list = []
 
-if 100 not in [rel['rel'] for rel in G[0][1].values()]:
-    edge_list.append((0,1, dict(rel=100)))
+if 200 not in [rel['rel'] for rel in G[0][1].values()]:
+    edge_list.append((0,1, dict(rel=200)))
     G.add_edges_from(edge_list)
 
-print(G[0])
+for i in G[0].keys():
+    print(i)
+# print(len(G[1].keys()))
+print("nope")
+# print([end_node for end_node in G[0].keys()])
+# print(G[0][1])
+
 
 
 
@@ -26,5 +32,3 @@ print(G[0])
 #         rel = relation_dict['r2i'][path['rel']]
 #     edge_list.append((ent_h_node, ent_t_node, dict(rel=rel)))
 #     G.add_edges_from(edge_list)
-
-print(G.edges(data=True))

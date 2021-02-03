@@ -132,7 +132,6 @@ def split_dataset(txt_path, output_dir):
     open(dev_dataset_path, 'w').writelines(lines[train_num:train_num + dev_num])
     open(test_dataset_path, 'w').writelines(lines[train_num + dev_num:])
 
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Set the file path')
     parser.add_argument('--data_dir', type = str, default =None, help='data dir path')
@@ -171,12 +170,10 @@ if __name__ == '__main__':
         if not i2e[cnpt_idx] in visited_concept:
             not_visited_idx.append(cnpt_idx)
     print('not visited: {}'.format(len(not_visited_idx)))
-
     with open(output_path, 'w') as fw:
         for curr_node in tqdm(not_visited_idx, desc='generating paths'):
             if not curr_node in kg_simple:
                 continue 
-
             # yujin add 
             if len([n for n in kg_simple[curr_node]]) == 0:
                 continue 
