@@ -46,7 +46,7 @@ def random_walk(start_node, kg_full, kg_simple, max_len=3):
     node_visited = set()
     relation_visited = set()
     node_visited.add(curr_node)
-    while num_sampled_nodes != max_len:
+    while num_sampled_nodes != max_len and len([n for n in kg_simple[curr_node]])>0 :
         edges = [n for n in kg_simple[curr_node]]
         iteration_node = 0
         flag_valid = False
