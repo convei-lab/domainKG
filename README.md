@@ -38,14 +38,14 @@ Codes in the below folders are based on [Path-Generator-QA](https://github.com/w
 
 2. For training a path generator
     ```bash
-    cd Commonsense-Path-Generator/learning-generator
-    sh run_path_sampling.sh
+    cd learning-generator
+    sh run_path_sampling_inte.sh
     ```
     If you set the setting 'split_dataset' as True, split dataset for training by ratio of 0.9:0.05:0.05 will be saved under output_dir.
 
 3. Train path generator using domainKG
     ```bash
-    ./run_dokg.sh $gpu_device
+    ./run_inte.sh $gpu_device
     ```
 
 ## For training a commonsense qa system

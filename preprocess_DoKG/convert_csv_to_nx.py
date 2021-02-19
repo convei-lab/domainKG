@@ -4,22 +4,39 @@ import pandas as pd
 import pickle
 import os
 import networkx as nx
+import re
+
+def convert(name):
+    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
+    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
 # convert uri to entity
-def refine_txt(text):
+def refine_txt(text, rel):
     # delete "" in text
     text = text.replace('"','')
     text = text.replace(" ",'')
     if '#' in text:
         text = text.split('#')[-1]
+
+    if rel == 'rel':
+        text = text.lower()
+    elif rel == 'reverse_rel':
+        text = '_' + text.lower()
+    else:
+        text = convert(text)
+    
     return text
 
 def refine_triples(triples):
     new_df = pd.DataFrame(columns=['ent_h','rel','ent_t'])
 
     for index, row in triples.iterrows():
-        new_row = {'ent_h':refine_txt(row['class']), 'rel':refine_txt(row['relations']), 'ent_t':refine_txt(row['value'])}
+        new_row = {'ent_h':refine_txt(row['class'], 'ent'), 'rel':refine_txt(row['relations'], 'rel'), 'ent_t':refine_txt(row['value'], 'ent')}
+        reverse_new_row = {'ent_h':refine_txt(row['value'], 'ent'), 'rel':refine_txt(row['relations'], 'reverse_rel'), 'ent_t':refine_txt(row['class'], 'ent')}
+
         new_df = new_df.append(new_row, ignore_index=True)
+        new_df = new_df.append(reverse_new_row, ignore_index=True)
+
 
     return new_df
 
@@ -138,6 +155,10 @@ def main():
     # Load triples csv file
     triples = pd.read_csv(args.csv_path) 
     print("The number of triples : {}".format(triples.shape[0]))
+
+    # Path check
+    if not os.path.exists(args.save_dir):
+        os.makedirs(args.save_dir)
 
     # Refine the triples
     triples = refine_triples(triples)

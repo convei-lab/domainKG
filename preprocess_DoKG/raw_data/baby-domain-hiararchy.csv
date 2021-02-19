@@ -1,4 +1,4 @@
- "subject" , "rel" , "supertype" ,
+class,relations,value,
  "http://www.semanticweb.org/theorist/ontologies/2020/10/root-ontology#0MonthOld" , "http://www.w3.org/2000/01/rdf-schema#isA" , "http://www.semanticweb.org/theorist/ontologies/2020/10/root-ontology#BabyStage" ,
  "http://www.semanticweb.org/theorist/ontologies/2020/10/root-ontology#0MonthOld" , "http://www.w3.org/2000/01/rdf-schema#isA" , "http://www.semanticweb.org/theorist/ontologies/2020/10/root-ontology#MonthlyStage" ,
  "http://www.semanticweb.org/theorist/ontologies/2020/10/root-ontology#0MonthOld" , "http://www.w3.org/2000/01/rdf-schema#isA" , "http://www.semanticweb.org/theorist/ontologies/2020/10/root-ontology#Person" ,

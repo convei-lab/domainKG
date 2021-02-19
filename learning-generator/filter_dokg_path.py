@@ -10,8 +10,8 @@ def convert(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
-dokg_entity_path = "/home/yujin/dot/preprocess_DoKG/data/multi_di/entity_vocab.pkl"
-dokg_relation_path = "/home/yujin/dot/preprocess_DoKG/data/multi_di/relation_vocab.pkl"
+dokg_entity_path = "/home/yujin/dot/preprocess_DoKG/data/dokg_concept/entity_vocab.pkl"
+dokg_relation_path = "/home/yujin/dot/preprocess_DoKG/data/dokg_concept/relation_vocab.pkl"
 cnpt_entity_path = "/home/yujin/dot/learning-generator/data/conceptnet/entity_vocab.pkl"
 
 with open(dokg_entity_path, 'rb') as handle:
@@ -31,16 +31,16 @@ print("origin entities",len(entities))
 
 ### if you want to remove duplication activate below code
 # except conceptNet duplication
-cnpt_entities = cnpt_entities['i2e']
-duplicated_entities = [convert(entity) for entity in entities if(convert(entity)) in cnpt_entities]
-entities = [convert(entity) for entity in entities if(convert(entity)) not in cnpt_entities]
-print("duplicated_entities", duplicated_entities)
-print("entities removed duplication",len(entities))
+# cnpt_entities = cnpt_entities['i2e']
+# duplicated_entities = [convert(entity) for entity in entities if(convert(entity)) in cnpt_entities]
+# entities = [convert(entity) for entity in entities if(convert(entity)) not in cnpt_entities]
+# print("duplicated_entities", duplicated_entities)
+# print("entities removed duplication",len(entities))
 
 relations = relations['i2r']
 
-path_all_path="/home/yujin/dot/learning-generator/data/sample_path_inte/sample_path.txt"
-save_path = "/home/yujin/dot/learning-generator/data/sample_path_inte/sample_path_dokg_only_expt_cnpt.txt"
+path_all_path="/home/yujin/dot/learning-generator/data/sample_path_inte_concept/sample_path.txt"
+save_path = "/home/yujin/dot/learning-generator/data/sample_path_inte_concept/sample_path_dokg_only.txt"
 
 with open(path_all_path, 'r') as fw:
     path_all = fw.readlines()

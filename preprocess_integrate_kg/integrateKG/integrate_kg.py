@@ -92,6 +92,7 @@ def integrate_entity_pkl(std_kg_path, add_kg_path, save_dir):
             new_index = len(integrate_entity_dict['i2e'])
             integrate_entity_dict['e2i'][new_entity] = new_index
             integrate_entity_dict['i2e'].append(new_entity)
+            # print("new entity : ", new_entity)
             convert_info_dict[index]=new_index
 
     # save into pickle
@@ -199,6 +200,10 @@ def main():
     parser.add_argument('--save_dir', type = str, default =None, help='dir path for output file')
 
     args = parser.parse_args()
+
+    # Path check
+    if not os.path.exists(args.save_dir):
+        os.makedirs(args.save_dir)
 
     # Load triples csv file
     items = pd.read_csv(args.integrate_list_path) 
