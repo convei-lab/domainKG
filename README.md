@@ -8,6 +8,19 @@ Codes in the below folders are based on [Path-Generator-QA](https://github.com/w
 * Commonsense-Path-Generator
     Please refer to the following [link](https://github.com/wangpf3/Commonsense-Path-Generator) for installation.
 
+## Quick start PG
+1. You can dowload trained path generator 
+    - path generator trained with domain kg [checkpoint](https://drive.google.com/file/d/1LSM0kV5-QVbU_SSxWA5-H8c4lOBJh2eQ/view?usp=sharing) 
+    - path generator trained with ConceptNet [checkpoint](https://drive.google.com/file/d/1dQNxyiP4g4pdFQD6EPMQdzNow9sQevqD/view)
+    - path generator trained with KG integrated domain KG and ConceptNet using naive method [checkpoint](https://drive.google.com/file/d/1NHpRYZmlZ9kQI81sReFhs29OTKYFWrZ0/view?usp=sharing)
+    - path generator trained with KG integrated domain KG and ConceptNet using pivoting [checkpoint](https://drive.google.com/file/d/1cMebP7dQzHM_z9rtDWwax5ywukUniQdt/view?usp=sharing)
+
+2. Before run the below code, check the source file path and save path.
+    ```bash
+    cd learning-generator
+    sh run_test_pg.sh
+    ```
+
 ## Path-Generator for domain specific KG
 1. Preprocess
     Before run the below code, check the source file path and save path.
