@@ -97,3 +97,7 @@ To preprocess the data, run:
 4. Commonsense QA system training
 bash scripts/run_main.sh ./config/csqa.config
 Training process and final evaluation results would be stored in './saved_models/'
+
+* The raw file of domain KG is located at /home/yujin/dot/preprocess_DoKG/raw_data/baby-domain-hiararchy-refined.csv .
+
+* If you have any additional needs, please request.
