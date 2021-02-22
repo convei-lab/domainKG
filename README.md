@@ -8,6 +8,9 @@ Codes in the below folders are based on [Path-Generator-QA](https://github.com/w
 * Commonsense-Path-Generator
     Please refer to the following [link](https://github.com/wangpf3/Commonsense-Path-Generator) for installation.
 
+The raw file of domain KG is located at /home/yujin/dot/preprocess_DoKG/raw_data/baby-domain-hiararchy-refined.csv .
+
+If you have any additional needs, please request.
 ## Quick start PG
 1. You can dowload trained path generator 
     - path generator trained with domain kg [checkpoint](https://drive.google.com/file/d/1LSM0kV5-QVbU_SSxWA5-H8c4lOBJh2eQ/view?usp=sharing) 
@@ -97,7 +100,3 @@ To preprocess the data, run:
 4. Commonsense QA system training
 bash scripts/run_main.sh ./config/csqa.config
 Training process and final evaluation results would be stored in './saved_models/'
-
-* The raw file of domain KG is located at /home/yujin/dot/preprocess_DoKG/raw_data/baby-domain-hiararchy-refined.csv .
-
-* If you have any additional needs, please request.
