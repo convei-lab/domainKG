@@ -32,33 +32,33 @@ Codes in the below folders are based on [Path-Generator-QA](https://github.com/w
 2. For training a path generator
     ```bash
     cd learning-generator
-    sh run_path_sampling_dokg_multi_di.sh
+    sh run_dokg_multi_di_rev_no_hiar.sh
     ```
     If you set the setting 'split_dataset' as True, split dataset for training by ratio of 0.9:0.05:0.05 will be saved under output_dir.
 
 3. Train path generator using domainKG
     ```bash
-    ./run_dokg_multi_di.sh $gpu_device
+    ./run_path_sampling_dokg_multi_di_rw_no_hiar.sh $gpu_device
     ```
 
 ## Path-Generator for integrate CSKG and domain specific KG
 1. Preprocess
     Before run the below code, check the source file path and save path.
     ```bash
-    cd integrateKG
+    cd preprocess_integrate_kg/integrateKG
     sh integrate_kg.sh
     ```
 
 2. For training a path generator
     ```bash
     cd learning-generator
-    sh run_path_sampling_inte.sh
+    sh run_path_sampling_inte_pivot.sh
     ```
     If you set the setting 'split_dataset' as True, split dataset for training by ratio of 0.9:0.05:0.05 will be saved under output_dir.
 
 3. Train path generator using domainKG
     ```bash
-    ./run_inte.sh $gpu_device
+    ./run_inte_pivot.sh $gpu_device
     ```
 
 ## For training a commonsense qa system
