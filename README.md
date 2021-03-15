@@ -32,6 +32,7 @@ If you have any additional needs, please request.
     cd preprocess_DoKG
     sh convert_csv_to_nx.sh
     ```
+    The outputs of this script are domain kg files (baby_domain_graph.nx / entity_vocab.pkl / relation_freq.pkl / relation_vocab.pkl).
 
 2. Before run the below code, check the config file. For training a path generator
     ```bash
@@ -44,7 +45,7 @@ If you have any additional needs, please request.
     ```bash
     ./run_path_sampling_dokg_multi_di_rw_no_hiar.sh $gpu_device
     ```
-
+    The output of this script is path generator model.
 ## Training Path-Generator for integrate CSKG and domain specific KG
 1. Preprocess
     Before run the below code, check the source file path and save path.
@@ -52,11 +53,12 @@ If you have any additional needs, please request.
     - [conceptnet file](https://drive.google.com/file/d/1kZ5DPXQbYqN7ieh_Bl5iYwquuSDMDlSE/view?usp=sharing)
     - [dokg file](https://drive.google.com/file/d/1qX-NVXgUPu5f3R4hm2YbS9Le2sA2Gb2K/view?usp=sharing)
     - [integrate list file](https://drive.google.com/file/d/1sWoywfdSzgXgHpeZJ-x8emtmvQVHhFhw/view?usp=sharing)
-    
+
     ```bash
     cd preprocess_integrate_kg/integrateKG
     sh integrate_kg.sh
     ```
+    The outputs of this script are domain kg files (integrate_graph.nx / entity_vocab.pkl /  relation_vocab.pkl).
 
 2. For training a path generator
     ```bash
@@ -69,6 +71,7 @@ If you have any additional needs, please request.
     ```bash
     ./run_inte_pivot.sh $gpu_device
     ```
+    The output of this script is path generator model.
 
 ## For training a commonsense qa system
 1. Download Data
