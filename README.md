@@ -24,15 +24,16 @@ If you have any additional needs, please request.
     sh run_test_pg.sh
     ```
 
-## Path-Generator for domain specific KG
+## Training Path-Generator for domain specific KG
 1. Preprocess
     Before run the below code, check the source file path and save path.
+    You can download example input file [here](https://drive.google.com/file/d/1wG9n-2i1WSdW5Of4osEMz1NIdhCVNagj/view?usp=sharing). 
     ```bash
     cd preprocess_DoKG
     sh convert_csv_to_nx.sh
     ```
 
-2. For training a path generator
+2. Before run the below code, check the config file. For training a path generator
     ```bash
     cd learning-generator
     sh run_dokg_multi_di_rev_no_hiar.sh
@@ -44,9 +45,14 @@ If you have any additional needs, please request.
     ./run_path_sampling_dokg_multi_di_rw_no_hiar.sh $gpu_device
     ```
 
-## Path-Generator for integrate CSKG and domain specific KG
+## Training Path-Generator for integrate CSKG and domain specific KG
 1. Preprocess
     Before run the below code, check the source file path and save path.
+    You can download example input files following links.
+    - [conceptnet file](https://drive.google.com/file/d/1kZ5DPXQbYqN7ieh_Bl5iYwquuSDMDlSE/view?usp=sharing)
+    - [dokg file](https://drive.google.com/file/d/1qX-NVXgUPu5f3R4hm2YbS9Le2sA2Gb2K/view?usp=sharing)
+    - [integrate list file](https://drive.google.com/file/d/1sWoywfdSzgXgHpeZJ-x8emtmvQVHhFhw/view?usp=sharing)
+    
     ```bash
     cd preprocess_integrate_kg/integrateKG
     sh integrate_kg.sh
