@@ -34,18 +34,28 @@ If you have any additional needs, please request.
     ```
     The outputs of this script are domain kg files (baby_domain_graph.nx / entity_vocab.pkl / relation_freq.pkl / relation_vocab.pkl).
 
-2. Before run the below code, check the config file. For training a path generator
+2. Path sampling for path generator
+    Before run the below code, check the input setting. 
+    - data_dir : dir_path of domain kg files. For example, the save_dir of convert_csv_to_nx.sh above process.
+    - output_dir : dir_path for output file
+    - graph_file_name : file name of graph_file in data_dir
+    - split_dataset : If you set the setting 'split_dataset' as True, split dataset for training by ratio of 0.9:0.05:0.05 will be saved under output_dir.
+
     ```bash
     cd learning-generator
-    sh run_dokg_multi_di_rev_no_hiar.sh
+    sh run_path_sampling_dokg_multi_di_rw_no_hiar.sh 
     ```
-    If you set the setting 'split_dataset' as True, split dataset for training by ratio of 0.9:0.05:0.05 will be saved under output_dir.
 
 3. Train path generator using domainKG
+    Before run the below code, check the config file(~/leraning-generator/config/). 
+    - data_dir : dir_path for training datset. For example, the output_dir of above process.
+    - model : name of the LM
+    
+    For training a path generator
     ```bash
-    ./run_path_sampling_dokg_multi_di_rw_no_hiar.sh $gpu_device
+    sh ./run_dokg_multi_di_rev_no_hiar.sh $gpu_device
     ```
-    The output of this script is path generator model.
+
 ## Training Path-Generator for integrate CSKG and domain specific KG
 1. Preprocess
     Before run the below code, check the source file path and save path.
